@@ -2,6 +2,7 @@
 
 const fourSquareURL = "https://api.foursquare.com/v2/venues/search";
 const geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json";
+const weatherURL = "https://api.openweathermap.org/data/2.5/forecast";
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -24,7 +25,7 @@ function getLocations(location, searchRadius, filter) {
   const queryString = formatQueryParams(params);
   const url = fourSquareURL + "?" + queryString;
 
-  console.log(url);
+  //console.log(url);
 
   fetch(url)
     .then(response => {
@@ -41,7 +42,7 @@ function getLocations(location, searchRadius, filter) {
 
 function displayResults(responseJson) {
   $('#results-list').empty();
-  console.log(responseJson.response.venues);
+  //console.log(responseJson.response.venues);
 
   for (let i = 0; i < responseJson.response.venues.length; i++) {
     $('#results-list').append(
@@ -59,6 +60,38 @@ function milesToMeters(miles) {
   return miles * 1609.344;
 }
 
+function getWeather(lat, lng) {
+  const params = {
+    lat: lat,
+    lon: lng,
+    appid: "f28cfbbd6d26c84d11054159afffeb99"
+  }
+
+  const queryString = formatQueryParams(params);
+  const url = weatherURL + "?" + queryString;
+
+  console.log(url);
+
+  fetch(url)
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error(response.statusText);
+  })
+  .then(responseJson => {
+    console.log("Weather API response: " + responseJson);
+    //displayWeather(responseJson);
+  })
+  .catch(err => {
+    alert("Something went wrong trying to retrieve the weather: " + err);
+  })
+}
+
+function displayWeather(responseJson) {
+
+}
+
 function getGeocode(location, searchRadius, filter) {
   const params = {
     address: location,
@@ -68,7 +101,7 @@ function getGeocode(location, searchRadius, filter) {
   const queryString = formatQueryParams(params);
   const url = geocodeURL + "?" + queryString;
 
-  console.log(url);
+  //console.logconsole.log(url);
 
   fetch(url)
     .then(response => {
@@ -81,7 +114,8 @@ function getGeocode(location, searchRadius, filter) {
       let lat = responseJson.results[0].geometry.location.lat;
       let lng = responseJson.results[0].geometry.location.lng;
       let ll = `${lat},${lng}`;
-      console.log("Geocode: " + ll);
+      // console.log("Geocode: " + ll);
+      getWeather(lat, lng);
       getLocations(ll, searchRadius, filter);
     })
     .catch(err => {
