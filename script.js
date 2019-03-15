@@ -1,96 +1,9 @@
 'use strict'
 
-const fourSquareURL = "https://api.foursquare.com/v2/venues/search";
+const googlePlacesNearbyURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
 const geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json";
 const weatherURL = "https://api.openweathermap.org/data/2.5/forecast";
-
-function formatQueryParams(params) {
-  const queryItems = Object.keys(params)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-  return queryItems.join('&');
-}
-
-//Use Geocoding API to get the precise ll instead of 'near' so that users can put in addresses
-function getLocations(location, searchRadius, filter) {
-  const params = {
-    ll: location,
-    radius: searchRadius,
-    categoryId: filter,
-    intent: "browse",
-    v: "20190312",
-    client_id: "YXK35O54A4IW0DZVKININB4DRIF02JEOHEY1D4FEA5MINXJM",
-    client_secret: "SYHY2JUGNKRI3422455J1MFXU0J4A51RZYNT3A3SBYCEBIWP",
-  }
-
-  const queryString = formatQueryParams(params);
-  const url = fourSquareURL + "?" + queryString;
-
-  //console.log(url);
-
-  fetch(url)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error(response.statusText);
-    })
-    .then(responseJson => displayResults(responseJson))
-    .catch(err => {
-      alert("Something went wrong: " + err);
-    })
-}
-
-function displayResults(responseJson) {
-  $('#results-list').empty();
-  //console.log(responseJson.response.venues);
-
-  for (let i = 0; i < responseJson.response.venues.length; i++) {
-    $('#results-list').append(
-      `<li>
-        <h3>${responseJson.response.venues[i].name}</h3>
-        <p>Address: ${responseJson.response.venues[i].location.address}, ${responseJson.response.venues[i].location.postalCode}, ${responseJson.response.venues[i].location.city}, ${responseJson.response.venues[i].location.state}</p>
-      </li>`
-    )
-  }
-
-  $('#search-results').removeClass('hidden');
-}
-
-function milesToMeters(miles) {
-  return miles * 1609.344;
-}
-
-function getWeather(lat, lng) {
-  const params = {
-    lat: lat,
-    lon: lng,
-    appid: "f28cfbbd6d26c84d11054159afffeb99"
-  }
-
-  const queryString = formatQueryParams(params);
-  const url = weatherURL + "?" + queryString;
-
-  console.log(url);
-
-  fetch(url)
-  .then(response => {
-    if (response.ok) {
-      return response.json();
-    }
-    throw new Error(response.statusText);
-  })
-  .then(responseJson => {
-    console.log("Weather API response: " + responseJson);
-    //displayWeather(responseJson);
-  })
-  .catch(err => {
-    alert("Something went wrong trying to retrieve the weather: " + err);
-  })
-}
-
-function displayWeather(responseJson) {
-
-}
+const currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather";
 
 function getGeocode(location, searchRadius, filter) {
   const params = {
@@ -101,7 +14,7 @@ function getGeocode(location, searchRadius, filter) {
   const queryString = formatQueryParams(params);
   const url = geocodeURL + "?" + queryString;
 
-  //console.logconsole.log(url);
+  console.log(url);
 
   fetch(url)
     .then(response => {
@@ -114,9 +27,8 @@ function getGeocode(location, searchRadius, filter) {
       let lat = responseJson.results[0].geometry.location.lat;
       let lng = responseJson.results[0].geometry.location.lng;
       let ll = `${lat},${lng}`;
-      // console.log("Geocode: " + ll);
-      getWeather(lat, lng);
-      getLocations(ll, searchRadius, filter);
+      //getCurrentWeather(lat, lng); //weatherController.js
+      getLocations(lat, lng, searchRadius, filter); //venueController.js
     })
     .catch(err => {
       alert("Something went wrong trying to retrieve the geocode: " + err);

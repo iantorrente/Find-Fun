@@ -3,46 +3,70 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta name="description" content="Find Fun is an asynchronous web app made by Ian Torrente that marries Google's geocoding API and FourSquare to give users an easy way to find things to do in the area of their choice. On top of that, the Open Weather API is also included so that wherever the user decides to plan their day, they'll have access to the most recent weather predictions.">
+    <title>Find Fun!</title>
+    <link href="desktop-style.css" rel="stylesheet" type="text/css" />
+    <link href="mobile-style.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="helpers.js"></script>
+    <script src="venueController.js"></script>
+    <script src="weatherController.js"></script>
+    <script src="script.js"></script>
   </head>
   <body>
     <header>
-      <h1>Find Me Fun!</h1>
     </header>
     <main>
       <div>
-        <form>
-          <label for="location-search">Location</label>
-          <input id="location-search" type="text" required>
+        <section id="weather-results" class="hidden">
+        </section>
+        
+        <form class="search-form">
+          <input id="location-search" type="text" autocomplete="off" placeholder="Where do you want to find things around?" required>
           <br />
 
-          <label for="search-radius">Search Radius (Miles)</label>
-          <input id="search-radius" type="text" value="5">
-          <br />
+          <div class="search-parameters">
+            <select id="search-radius" aria-placeholder="radius" required name="radius">
+              <option value="" disabled selected>Radius (mi)</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+              <option value="30">30</option>
+              <option value="35">35</option>
+              <option value="40">40</option>
+              <option value="45">45</option>
+              <option value="50">50</option>
+              <option value="55">55</option>
+              <option value="60">60</option>
+            </select>
+            
+            <select id="location-filter" name="filters">
+              <option value="" disabled selected>Location Type</option>
+              <option value="shopping_mall">Malls</option>
+              <option value="restaurant">Restaurants</option>
+              <option value="museum">Museums</option>
+              <option value="amusement_park">Theme Parks</option>
+              <option value="park">Parks</option>
+              <option value="movie_theater">Movie Theaters</option>
+            </select>
+          </div>
 
-          <label for="location-filter">Location Filters</label>
-          <select id="location-filter" name="filters">
-            <option value="4bf58dd8d48988d1fd941735">Malls</option>
-            <option value="4d4b7105d754a06374d81259">Restaurants</option>
-            <option value="4bf58dd8d48988d181941735">Museums</option>
-            <option value="4bf58dd8d48988d182941735">Theme Parks</option>
-            <option value="4bf58dd8d48988d163941735">Parks</option>
-            <option value="4bf58dd8d48988d17f941735">Movie Theaters</option>
-          </select>
-          <br />
-
-          <input type="submit" value="Search">
+          <input id="form-submit" type="submit" value="Search">
         </form>
+
         <section id="search-results" class="hidden">
-          <h2>Search Results</h2>
+          <div id="map">
+             <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9fDg9gLs1r8uKO64_HuYazhX9VS-P-3A&libraries=places"></script>
+          </div>
           <ul id="results-list">
           </ul>
         </section>
       </div>
     </main>
     <footer></footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="script.js"></script>
   </body>
 </html>
