@@ -25,10 +25,11 @@ function getLocations(lat, lng, searchRadius, filter) {
 
 function processLocations(results, status) {
   console.log("Inside of processLocations()");
-  console.log(results[0]);
+  console.log(results);
   clearResultsList();
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (let i = 0; i < results.length; i++) {
+      console.log("processing location #" + i);
       getDetailedLocation(results[i]);
     }
   }
@@ -64,13 +65,22 @@ function clearResultsList() {
 }
 
 function displayResult(place) {
+  let ratingColor = "";
+
+  if (place.rating > 4.0) {
+    ratingColor = "green";
+  } else if (place.rating > 3.0) {
+    ratingColor = "yellow";
+  } else if (place.rating > 2.0) {
+    ratingColor = "orange";
+  }
+  console.log("Rating color is: " + ratingColor);
   console.log(place);
   $('#results-list').append(
     `<li class=result-item>
       <span class=item-name><h3>${place.name}</h3></span>
-      <span class=item-rating><p>${place.rating}</p></span>
-      <p class="item-address"><i>${place.formatted_address}</i></p>
-      <p>${place.international_phone_number}</p>
+      <span ${place.rating != undefined ? `class="item-rating ${ratingColor}"` : ""}><p>${place.rating != undefined ? place.rating : ""}</p></span>
+      <span class=item-address><p><i>${place.formatted_address}</i></p></span>
     </li>`
   )
 }
