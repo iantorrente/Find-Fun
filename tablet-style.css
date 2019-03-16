@@ -1,4 +1,4 @@
-@media only screen and (max-width: 414px) {
+@media only screen and (min-width: 415px) and (max-width: 1366px) {
   * {
     box-sizing: border-box;
   }
@@ -43,14 +43,14 @@
     font-size: 16px;
     margin-right: auto;
     margin-left: auto;
-    width: 90%;
+    width: 60%;
     height: 50px;
   }
 
   .search-parameters {
     margin-right: auto;
     margin-left: auto;
-    width: 90%;
+    width: 60%;
     height: 50px;
   }
 
@@ -82,7 +82,7 @@
     margin-right: auto;
     margin-left: auto;
     margin-top: 5%;
-    width: 45%;
+    width: 30%;
     height: 50px;
   }
 
@@ -110,6 +110,7 @@
   }
 
   #search-results {
+    background-color: rgba(0, 0, 0, 0.466);
     margin-right: auto;
     margin-left: auto;
     width: 100%;
@@ -130,7 +131,12 @@
     margin-left: auto;
     margin-bottom: 0;
     padding: 3%;
-    width: 100%;
+    width: 70%;
+  }
+
+  .result-item:hover {
+    cursor: pointer;
+    background-color: rgba(68, 68, 68, 0.699);
   }
 
   .result-item .item-name {
@@ -149,7 +155,7 @@
     float: left;
     border-radius: 3px;
     color: black;
-    width: 10%;
+    width: 45px;
     height: 45px;
   }
 
