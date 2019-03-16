@@ -6,6 +6,7 @@
     <meta name="description" content="Find Fun is an asynchronous web app made by Ian Torrente that marries Google's geocoding API and FourSquare to give users an easy way to find things to do in the area of their choice. On top of that, the Open Weather API is also included so that wherever the user decides to plan their day, they'll have access to the most recent weather predictions.">
     <title>Find Fun!</title>
     <link href="desktop-style.css" rel="stylesheet" type="text/css" />
+    <link href="tablet-style.css" rel="stylesheet" type="text/css" />
     <link href="mobile-style.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="helpers.js"></script>
@@ -22,7 +23,7 @@
         </section>
         
         <form class="search-form">
-          <input id="location-search" type="text" autocomplete="off" placeholder="Where do you want to find things around?" required>
+          <input id="location-search" type="text" autocomplete="off" placeholder="Find things around..." required>
           <br />
 
           <div class="search-parameters">
@@ -36,15 +37,9 @@
               <option value="20">20</option>
               <option value="25">25</option>
               <option value="30">30</option>
-              <option value="35">35</option>
-              <option value="40">40</option>
-              <option value="45">45</option>
-              <option value="50">50</option>
-              <option value="55">55</option>
-              <option value="60">60</option>
             </select>
             
-            <select id="location-filter" name="filters">
+            <select id="location-filter" name="filters" required>
               <option value="" disabled selected>Location Type</option>
               <option value="shopping_mall">Malls</option>
               <option value="restaurant">Restaurants</option>
