@@ -135,16 +135,37 @@
 
   .result-item .item-name {
     float: left;
+    font-size: 20px;
     width: 90%;
+  }
+
+  .result-item h3 {
+    margin-top: 3%;
+    margin-bottom: 0;
   }
 
   .result-item .item-rating {
     text-align: center;
-    background-color: white;
+    float: left;
     border-radius: 3px;
     color: black;
-    float: left;
     width: 10%;
     height: 45px;
+  }
+
+  .result-item .item-address {
+    display: inline-block;
+  }
+
+  .green {
+    background-color: rgb(0, 202, 0);
+  }
+
+  .yellow {
+    background-color: rgb(251, 255, 27);
+  }
+
+  .orange {
+    background-color: rgb(236, 128, 27);
   }
 }
