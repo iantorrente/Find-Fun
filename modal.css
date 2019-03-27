@@ -1,0 +1,261 @@
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  bottom: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.466); /* Fallback color */
+  color: white;
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+  -webkit-filter: blur(0);
+  -moz-filter: blur(0);
+  -o-filter: blur(0);
+  -ms-filter: blur(0);
+  filter: blur(0);
+}
+
+.modal-title h2 {
+  font-size: 36px;
+}
+
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(80, 80, 80, 0.719);
+  width: 100%;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: rgba(17, 17, 17, 0.719);
+  color: white;
+}
+
+.modal-body {
+  padding: 2px 16px;
+  height: 30%;
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: rgba(17, 17, 17, 0.719);
+  color: white;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hours-container {
+  display: inline-block;
+  width: 25%;
+}
+
+.location-hours {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.content-container {
+  text-align: left;
+  display: inline-block;
+  overflow: scroll;
+  width: 74%;
+  max-height: 240px;
+}
+
+.no-reviews {
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.reviews-container {
+  width: 100%;
+}
+
+.reviews-list {
+  padding-left: 0;
+}
+
+.review-item {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.review-item:nth-child(odd) {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@media only screen and (max-width: 414px) {
+  .modal {
+    background-color: rgba(0, 0, 0, 0.85);
+    height: 80%;
+  }
+
+  .modal-header {
+    background-color: rgba(17, 17, 17, 0.918);
+  }
+
+  .modal-title h2 {
+    font-size: 36px;
+  }
+
+  .modal-content {
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+  }
+
+  .hours-container {
+    display: block;
+    width: 100%;
+  }
+
+  .location-hours {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .content-container {
+    text-align: left;
+    display: block;
+    overflow: visible;
+    width: 100%;
+    max-height: 200px;
+  }
+
+  .no-reviews {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .reviews-container {
+    width: 100%;
+  }
+
+  .reviews-list {
+    padding-left: 0;
+  }
+
+  .review-item {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .review-item:nth-child(odd) {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+  }
+} 
+
+@media only screen and (min-width: 415px) and (max-width: 1366px) {
+  .modal {
+    background-color: rgba(0, 0, 0, 0.85);
+    height: 80%;
+  }
+
+  .modal-header {
+    background-color: rgba(17, 17, 17, 0.918);
+  }
+
+  .modal-title h2 {
+    font-size: 36px;
+  }
+
+  .modal-content {
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+  }
+
+  .hours-container {
+    display: block;
+    font-size: 22px;
+    width: 100%;
+  }
+
+  .location-hours {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .content-container {
+    text-align: left;
+    display: block;
+    overflow: visible;
+    width: 100%;
+    max-height: 200px;
+  }
+
+  .no-reviews {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .reviews-container {
+    font-size: 22px;
+    width: 100%;
+  }
+
+  .reviews-container h3 {
+    font-size: 28px;
+  }
+
+  .reviews-list {
+    padding-left: 0;
+  }
+
+  .review-item {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .review-item:nth-child(odd) {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+  }
+} 
