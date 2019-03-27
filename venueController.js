@@ -4,6 +4,8 @@ let map;
 let service;
 let infowindow;
 
+const STORE = [];
+
 function getLocations(lat, lng, searchRadius, filter) {
   const location = new google.maps.LatLng(lat, lng);
   map = new google.maps.Map(document.getElementById('map'), {
@@ -55,6 +57,8 @@ function getDetailedLocation(location) {
 function processDetailedLocation(place, status) {
   console.log("Inside of processDetailedLocation()");
   if (status == google.maps.places.PlacesServiceStatus.OK) {
+    //put the location into the store
+    STORE.push(place);
     displayResult(place);
   }
 }
@@ -74,8 +78,6 @@ function displayResult(place) {
   } else if (place.rating > 2.0) {
     ratingColor = "orange";
   }
-  console.log("Rating color is: " + ratingColor);
-  console.log(place);
   $('#results-list').append(
     `<li class=result-item>
       <span class=item-name><h3>${place.name}</h3></span>
@@ -83,4 +85,22 @@ function displayResult(place) {
       <span class=item-address><p><i>${place.formatted_address}</i></p></span>
     </li>`
   )
+}
+
+function modalController() {
+  $('#results-list').on('click', '.result-item', event => {
+    let 
+  locationName = $(event.currentTarget).closest('.result-item').find('h3').text();
+    $('.modal').css("display", "block");
+    $('#search-results').addClass("blur");
+    $('.search-form').addClass("blur");
+    displayModal(locationName, STORE);
+  });
+
+  $('#detailed-location-modal').on('click', '.close', event => {
+    $('.modal').css("display", "none");
+    $('#search-results').removeClass("blur");
+    $('.search-form').removeClass("blur");
+  });
+  
 }
