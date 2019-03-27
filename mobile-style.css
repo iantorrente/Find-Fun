@@ -6,7 +6,7 @@
   body {
     text-align: center;
     background-color: lightgray;
-    background: url("https://backgroundcheckall.com/wp-content/uploads/2017/12/blurry-city-background-10.jpg") no-repeat center center fixed;
+    background: url("https://www.thisiscolossal.com/wp-content/uploads/2018/05/XavierPortela_09.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -25,6 +25,13 @@
     display: none;
   }
 
+  .input-search {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 2%;
+    width: 80%;
+  }
+
   .search-form {
     background-color: rgba(0, 0, 0, 0.466);
     color: white;
@@ -36,28 +43,29 @@
 
 
   #location-search {
-    display: block;
-    text-align: center;
+    display: inline-block;
+    text-align: left;
     border: none;
-    border-radius: 10px;
+    border-radius: 0;
     font-size: 16px;
     margin-right: auto;
     margin-left: auto;
-    width: 90%;
+    padding: 10px;
+    width: 80%;
     height: 50px;
   }
 
   .search-parameters {
     margin-right: auto;
     margin-left: auto;
-    width: 90%;
+    width: 80%;
     height: 50px;
   }
 
   #search-radius {
     float: left;
     border: none;
-    border-radius: 10px;
+    border-radius: 0;
     font-size: 14px;
     margin-right: 1%;
     width: 29%;
@@ -68,21 +76,21 @@
     float: left;
     font-size: 14px;
     border: none;
-    border-radius: 10px;
+    border-radius: 0;
     width: 70%;
     height: 50px;
   }
 
   #form-submit {
-    display: block;
-    background-color: white;
+    display: inline-block;
+    background-color: rgb(172, 84, 255);
     border: none;
     font-size: 16px;
-    border-radius: 10px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 5%;
-    width: 45%;
+    border-radius: 0;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 0;
+    width: 50;
     height: 50px;
   }
 

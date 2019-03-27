@@ -3,14 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Find Fun is an asynchronous web app made by Ian Torrente that marries Google's geocoding API and FourSquare to give users an easy way to find things to do in the area of their choice. On top of that, the Open Weather API is also included so that wherever the user decides to plan their day, they'll have access to the most recent weather predictions.">
+    <meta name="description" content="Find Fun is an asynchronous web app made by Ian Torrente that marries Google's geocoding API and Google's places API to give users an easy way to find things to do in the area of their choice. On top of that, the Open Weather API is also included so that wherever the user decides to plan their day, they'll have access to the most recent weather predictions.">
     <title>Find Fun!</title>
+    <link href="modal.css" rel="stylesheet" type="text/css" />
     <link href="desktop-style.css" rel="stylesheet" type="text/css" />
     <link href="tablet-style.css" rel="stylesheet" type="text/css" />
     <link href="mobile-style.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="helpers.js"></script>
     <script src="venueController.js"></script>
+    <script src="modalController.js"></script>
     <script src="weatherController.js"></script>
     <script src="script.js"></script>
   </head>
@@ -23,8 +25,10 @@
         </section>
         
         <form class="search-form">
-          <input id="location-search" type="text" autocomplete="off" placeholder="Find things around..." required>
-          <br />
+          <div class="input-search">
+            <input id="location-search" type="text" placeholder="Find things around..." required>
+            <input id="form-submit" type="submit" value=" ">
+          </div>
 
           <div class="search-parameters">
             <select id="search-radius" aria-placeholder="radius" required name="radius">
@@ -49,8 +53,6 @@
               <option value="movie_theater">Movie Theaters</option>
             </select>
           </div>
-
-          <input id="form-submit" type="submit" value="Search">
         </form>
 
         <section id="search-results" class="hidden">
@@ -60,6 +62,30 @@
           <ul id="results-list">
           </ul>
         </section>
+        <div id="detailed-location-modal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="close">&times;</span>
+              <span class="modal-title">
+                <h2 class="location-name"></h2>
+              </span>
+            </div>
+            <div class="modal-body">
+              <span class="hours-container">
+                <h4 class="location-phone"></h4>
+                <h4 class="location-open"></h4>
+                <ul class="location-hours"></ul>
+              </span>
+              <span class="content-container">
+                <div class="reviews-container">
+                  <h3>Reviews:</h3>
+                  <ul class="reviews-list"></ul>
+                </div>
+              </span>
+            </div>
+          </div>
+
+        </div>
       </div>
     </main>
     <footer></footer>
