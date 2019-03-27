@@ -36,6 +36,7 @@ function getGeocode(location, searchRadius, filter) {
 }
 
 function watchForm() {
+  modalController();
   $('form').submit(event => {
     event.preventDefault();
     const location = $('#location-search').val();
@@ -45,5 +46,6 @@ function watchForm() {
     console.log("Submit fired with a location of: " + location + "\nradius of: " + searchRadius + "\nfilter of: " + filter);
   })
 }
+
 
 $(watchForm);
