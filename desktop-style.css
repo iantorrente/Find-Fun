@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   text-align: center;
   background-color: lightgray;
   background: url("https://www.thisiscolossal.com/wp-content/uploads/2018/05/XavierPortela_09.jpg") no-repeat center center fixed;
