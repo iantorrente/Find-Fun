@@ -1,4 +1,4 @@
-# Find Fun! (Thinkful-API-Capstone)
+# Find Fun!
 ## Live Page: (https://iantorrente.github.io/Thinkful-API-Capstone/)
 ## Introduction
 Find Fun! is a simple web app that allows users to input any location, be it a zipcode, address, geolocation, or just a location off the top of their head (e.g. "Big Ben" or "Walmart Los Angeles"), and recieve venues of their choosing around that location. Users are able to choose what type of venue they want to find from the drop down list and a radius as well, maxing out at 30 miles. 
